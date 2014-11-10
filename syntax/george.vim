@@ -58,6 +58,7 @@ syn keyword semanticTableauxCommands not_not_nb
 syn keyword semanticTableauxCommands iff_br not_iff_br
 syn keyword semanticTableauxCommands forall_nb not_forall_nb
 syn keyword semanticTableauxCommands exists_nb not_exists_nb
+syn keyword semanticTableauxCommands closed
 
 syn match stepId '\d\+'
 syn match stepNumber '\d\+)'
