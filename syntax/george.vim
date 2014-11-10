@@ -27,6 +27,7 @@ syn keyword transformationalProofCommands comm assoc contr lem
 syn keyword transformationalProofCommands impl contrapos simp1 simp2 
 syn keyword transformationalProofCommands distr dm neg equiv 
 syn keyword transformationalProofCommands idemp
+syn match transformationalProofKeywords '<==>'
 
 syn keyword naturalDeductionCommands and_i and_e or_i lem
 syn keyword naturalDeductionCommands imp_e not_e not_not_i not_not_e
@@ -88,6 +89,7 @@ hi def link predicateLogicKeywords Special
 hi def link logicKeywords Special
 "hi def link NDSubproofKeywords Special
 hi def link setKeywords Special
+hi def link transformationalProofKeywords Special
 
 hi def link stepNumber Identifier
 hi def link stepId Identifier
