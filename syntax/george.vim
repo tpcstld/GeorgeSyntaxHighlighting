@@ -27,6 +27,8 @@ syn keyword transformationalProofCommands comm assoc contr lem
 syn keyword transformationalProofCommands impl contrapos simp1 simp2 
 syn keyword transformationalProofCommands distr dm neg equiv 
 syn keyword transformationalProofCommands idemp
+syn keyword transformationalProofCommands forall_over_and exists_over_or
+syn keyword transformationalProofCommands swap_vars move_forall
 syn match transformationalProofKeywords '<==>'
 
 syn keyword naturalDeductionCommands and_i and_e or_i lem
