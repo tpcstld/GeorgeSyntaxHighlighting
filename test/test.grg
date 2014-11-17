@@ -1,0 +1,23 @@
+% This is a comment
+# This is a special sequence
+
+% Command
+comm assoc contr lem impl contrapos simp1 simp2 distr dm neg equiv
+idemp forall_over_and exists_over_or swap_vars move_exists move_forall
+and_i and_e or_i lem imp_e not_e not_not_i not_not_e
+iff_i iff_e trans iff_mp exists_i forall_e eq_i eq_e premise
+raa cases imp_i forall_i exists_e disprove case assume for every for some
+set and_nb not_and_br or_br not_or_nb imp_br not_imp_nb not_not_nb
+iff_br not_iff_br forall_nb not_forall_nb exists_nb not_exists_nb closed
+arith
+
+% Keyword
+by on forall exists
+schema begin pred end
+
+% Numbering
+1 2 3 4 5 6 7 8 9 0 100 123 31337
+1) 2) 3) 4) 5) 6) 7) 8) 9) 0) 100) 123) 31337)
+
+% Constants
+true false empty univ N
