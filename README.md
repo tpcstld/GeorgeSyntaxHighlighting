@@ -15,6 +15,4 @@ For automatic file detection, copy the `ftdetect/george.vim` file to your `.vim/
 ---------
 You can uncomment (or comment) various pieces of the syntax to enable (or disable) various pieces of highlighting.
 
-I've already included some unused highlighting for more set keywords, like 'union' and 'inter', among other things. You can uncomment lines 48 and 49 if you want them.
-
 Your milage may vary. :P
