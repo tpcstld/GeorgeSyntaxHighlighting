@@ -7,21 +7,21 @@ if exists("b:current_syntax")
     finish
 endif
 
-syn keyword basicLanguageCommands by 
-syn keyword basicLanguageCommands on nextgroup=stepId
+syn keyword basicLanguageKeywords by 
+syn keyword basicLanguageKeywords on nextgroup=stepId
 
-syn match logicKeywords '&'
-syn match logicKeywords '|'
-syn match logicKeywords '=>'
-syn match logicKeywords '<=>'
-syn match logicKeywords '|='
-syn match logicKeywords '!'
+syn match logicOperators '&'
+syn match logicOperators  '|'
+syn match logicOperators '=>'
+syn match logicOperators '<=>'
+syn match logicOperators '|='
+syn match logicOperators '!'
 
 syn keyword basicLanguageConstants true false
 
 syn keyword predicateLogicKeywords forall exists
-syn match predicateLogicKeywords '=='
-syn match predicateLogicKeywords '!='
+syn match predicateLogicOperators '=='
+syn match predicateLogicOperators '!='
 
 syn keyword transformationalProofCommands comm assoc contr lem 
 syn keyword transformationalProofCommands impl contrapos simp1 simp2 
@@ -29,7 +29,7 @@ syn keyword transformationalProofCommands distr dm neg equiv
 syn keyword transformationalProofCommands idemp
 syn keyword transformationalProofCommands forall_over_and exists_over_or
 syn keyword transformationalProofCommands swap_vars move_exists move_forall
-syn match transformationalProofKeywords '<==>'
+syn match transformationalProofOperators '<==>'
 
 syn keyword naturalDeductionCommands and_i and_e or_i lem
 syn keyword naturalDeductionCommands imp_e not_e not_not_i not_not_e
@@ -45,14 +45,14 @@ syn match NDSubproofCommands 'for some'
 
 syn keyword setCommands set
 syn keyword setConstants empty univ
-syn keyword setKeywords in sube sub pow union inter
-syn keyword setKeywords card gen_U dom ran id iter
-syn match setKeywords '|>' 
-syn match setKeywords '|->'
-syn match setKeywords '<|'
-syn match setKeywords '<-|'
-syn match setKeywords '(+)'
-syn match setKeywords ';'
+syn keyword setFunctions in sube sub pow union inter
+syn keyword setFunctions card gen_U dom ran id iter
+syn match setOperators '|>' 
+syn match setOperators '|->'
+syn match setOperators '<|'
+syn match setOperators '<-|'
+syn match setOperators '(+)'
+syn match setOperators ';'
 
 syn keyword semanticTableauxCommands and_nb not_and_br
 syn keyword semanticTableauxCommands or_br not_or_nb
@@ -63,9 +63,14 @@ syn keyword semanticTableauxCommands forall_nb not_forall_nb
 syn keyword semanticTableauxCommands exists_nb not_exists_nb
 syn keyword semanticTableauxCommands closed
 
-syn keyword zCommands schema begin pred end
-syn match zKeywords '::='
-syn match zKeywords ';;'
+syn keyword arithmeticCommands arith
+
+syn keyword zDeclarations schema begin pred end
+syn keyword zTypes Delta Xi
+syn keyword zConstants N
+syn keyword zFunctions seq
+syn match zOperators '::='
+syn match zNextLine ';;'
 
 syn match stepId '\d\+'
 syn match stepNumber '\d\+)'
@@ -77,31 +82,46 @@ syn match commands '#.*$'
 
 let b:current_syntax = "george"
 
+
+" META: Comments and George commands
 hi def link comments Comment
 hi def link commands PreProc
 
-hi def link basicLanguageCommands Keyword
-hi def link basicLanguageConstants Constant
-
-
-hi def link naturalDeductionCommands Type
-hi def link NDSubproofCommands Type
-
-hi def link semanticTableauxCommands Type
-
-hi def link predicateLogicKeywords Special
-
-hi def link logicKeywords Special
-
-hi def link transformationalProofCommands Type
-hi def link transformationalProofKeywords Special
-
-hi def link setConstants Constant
-hi def link setCommands Type
-hi def link setKeywords Special
-
-hi def link zKeywords Special
-hi def link zCommands Keyword
-
+" NUMBERING: Line numbers for proofs
 hi def link stepNumber Identifier
 hi def link stepId Identifier
+
+" KEYWORDS: Special labels for structuring proofs like by and forall
+hi def link basicLanguageKeywords Keyword
+hi def link predicateLogicKeywords Keyword
+
+" COMMANDS: Proof procedures like assume, and_nb, imp_i, and arith
+hi def link naturalDeductionCommands Type
+hi def link NDSubproofCommands Type
+hi def link semanticTableauxCommands Type
+hi def link transformationalProofCommands Type
+hi def link setCommands Type
+hi def link arithmeticCommands Type
+
+" FUNCTIONS: Meaningful labels like union, seq, and ran
+"hi def link setFunctions Special
+"hi def link zFunctions Special
+
+" CONSTANTS: Defined variables such as N, true, and univ
+hi def link basicLanguageConstants Constant
+hi def link setConstants Constant
+hi def link zConstants Constant
+
+" OPERATORS: Special symbols like !, ==, and <==>
+"hi def link logicOperators Special
+"hi def link predicateLogicOperators Special
+"hi def link transformationalProofOperators Special
+"hi def link setOperators Special
+"hi def link zOperators Special
+
+" Z: Special keywords for the Z specification
+hi def link zDeclarations Keyword
+hi def link zTypes Type
+
+" MISC: Special symbols like ;;, which have no good meaning
+"hi def link zNextLine Comment
