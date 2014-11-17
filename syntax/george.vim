@@ -70,6 +70,14 @@ syn keyword zTypes Delta Xi
 syn keyword zConstants N
 syn keyword zFunctions seq
 syn match zOperators '::='
+syn match zOperators '[<-]->'
+syn match zOperators '>-->'
+syn match zOperators '-->>'
+syn match zOperators '>-->>'
+syn match zOperators '-|->'
+syn match zOperators '>-|->'
+syn match zOperators '-|->>'
+syn match zOperators '>-|->>'
 syn match zNextLine ';;'
 
 syn match stepId '\d\+'
@@ -104,8 +112,8 @@ hi def link setCommands Type
 hi def link arithmeticCommands Type
 
 " FUNCTIONS: Meaningful labels like union, seq, and ran
-"hi def link setFunctions Special
-"hi def link zFunctions Special
+hi def link setFunctions Special
+hi def link zFunctions Special
 
 " CONSTANTS: Defined variables such as N, true, and univ
 hi def link basicLanguageConstants Constant
