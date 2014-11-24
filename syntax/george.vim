@@ -7,6 +7,7 @@ if exists("b:current_syntax")
     finish
 endif
 
+" Basic Matching
 syn keyword basicLanguageKeywords by 
 syn keyword basicLanguageKeywords on nextgroup=stepId
 
@@ -19,10 +20,12 @@ syn match logicOperators '!'
 
 syn keyword basicLanguageConstants true false
 
+" Predicate Logic Matching
 syn keyword predicateLogicKeywords forall exists
 syn match predicateLogicOperators '=='
 syn match predicateLogicOperators '!='
 
+" Transformational Proof Matching
 syn keyword transformationalProofCommands comm assoc contr lem 
 syn keyword transformationalProofCommands impl contrapos simp1 simp2 
 syn keyword transformationalProofCommands distr dm neg equiv 
@@ -31,6 +34,7 @@ syn keyword transformationalProofCommands forall_over_and exists_over_or
 syn keyword transformationalProofCommands swap_vars move_exists move_forall
 syn match transformationalProofOperators '<==>'
 
+" Natural Deduction Matching
 syn keyword naturalDeductionCommands and_i and_e or_i lem
 syn keyword naturalDeductionCommands imp_e not_e not_not_i not_not_e
 syn keyword naturalDeductionCommands iff_i iff_e trans iff_mp
@@ -43,6 +47,7 @@ syn keyword NDSubproofCommands disprove case assume
 syn match NDSubproofCommands 'for every'
 syn match NDSubproofCommands 'for some'
 
+" Set Matching
 syn keyword setCommands set
 syn keyword setConstants empty univ
 syn keyword setFunctions in sube sub pow union inter
@@ -54,6 +59,7 @@ syn match setOperators '<-|'
 syn match setOperators '(+)'
 syn match setOperators ';'
 
+" Semantic Tableaux Matching
 syn keyword semanticTableauxCommands and_nb not_and_br
 syn keyword semanticTableauxCommands or_br not_or_nb
 syn keyword semanticTableauxCommands imp_br not_imp_nb
@@ -63,8 +69,10 @@ syn keyword semanticTableauxCommands forall_nb not_forall_nb
 syn keyword semanticTableauxCommands exists_nb not_exists_nb
 syn keyword semanticTableauxCommands closed
 
+" Arithmetic Matching
 syn keyword arithmeticCommands arith
 
+" Z Language Matching
 syn keyword zDeclarations schema begin pred end
 syn keyword zTypes Delta Xi
 syn keyword zConstants N
@@ -80,11 +88,22 @@ syn match zOperators '-|->>'
 syn match zOperators '>-|->>'
 syn match zNextLine ';;'
 
+" Program Correctness Matching
+syn keyword programCorrectnessKeywords proc assert
+syn keyword programCorrectnessKeywords if else then while do
+
+syn match programCorrectnessConstants '\d\+'
+
+" Metadata Matching
 syn match stepId '\d\+'
 syn match stepNumber '\d\+)'
 
 syn match comments '%.*$'
 syn match commands '#.*$'
+
+" Regions
+
+syn region checkPC start='#check PC' end='#.*$' contains=comments, commands, programCorrectnessKeywords, programCorrectnessConstants keepend
 
 " Syntax Highlighting
 
@@ -130,6 +149,10 @@ hi def link zConstants Constant
 " Z: Special keywords for the Z specification
 hi def link zDeclarations Keyword
 hi def link zTypes Type
+
+" Program Correctness: Special keywords for program correctness
+hi def link programCorrectnessKeywords Keyword
+hi def link programCorrectnessConstants Constant
 
 " MISC: Special symbols like ;;, which have no good meaning
 "hi def link zNextLine Comment
