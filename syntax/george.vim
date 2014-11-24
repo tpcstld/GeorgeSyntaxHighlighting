@@ -8,8 +8,8 @@ if exists("b:current_syntax")
 endif
 
 " Basic Matching
-syn keyword basicLanguageKeywords by 
-syn keyword basicLanguageKeywords on nextgroup=stepId
+syn keyword basicLanguageKeywordsBy by
+syn keyword basicLanguageKeywordsOn on contained nextgroup=stepId
 
 syn match logicOperators '&'
 syn match logicOperators  '|'
@@ -95,7 +95,7 @@ syn keyword programCorrectnessKeywords if else then while do
 syn match numericalConstants '\<\d\+\>'
 
 " Metadata Matching
-syn match stepId '\d\+'
+syn match stepId '\<\d\+\>' contained
 syn match stepNumber '^\s*\d\+)'
 
 syn match comments '%.*$'
@@ -105,7 +105,7 @@ syn match commands '#.*$'
 
 syn region checkPC start='#check PC' end='#.*$' contains=comments, commands, programCorrectnessKeywords, numericalConstants keepend
 
-syn region proofStep start='^\s*\d\+)' end='\(by\|premise\|{\)' transparent keepend contains=ALLBUT, stepId, programCorrectnessKeywords
+syn region proofOn start='\<on\>' end='$' contains=stepId, basicLanguageKeywordsOn, comments keepend
 
 " Syntax Highlighting
 
@@ -121,7 +121,8 @@ hi def link stepNumber Identifier
 hi def link stepId Identifier
 
 " KEYWORDS: Special labels for structuring proofs like by and forall
-hi def link basicLanguageKeywords Keyword
+hi def link basicLanguageKeywordsBy Keyword
+hi def link basicLanguageKeywordsOn Keyword
 hi def link predicateLogicKeywords Keyword
 
 " COMMANDS: Proof procedures like assume, and_nb, imp_i, and arith
