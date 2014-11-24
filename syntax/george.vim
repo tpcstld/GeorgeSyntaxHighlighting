@@ -92,18 +92,20 @@ syn match zNextLine ';;'
 syn keyword programCorrectnessKeywords proc assert
 syn keyword programCorrectnessKeywords if else then while do
 
-syn match programCorrectnessConstants '\d\+'
+syn match numericalConstants '\d\+'
 
 " Metadata Matching
 syn match stepId '\d\+'
-syn match stepNumber '\d\+)'
+syn match stepNumber '^\s*\d\+)'
 
 syn match comments '%.*$'
 syn match commands '#.*$'
 
 " Regions
 
-syn region checkPC start='#check PC' end='#.*$' contains=comments, commands, programCorrectnessKeywords, programCorrectnessConstants keepend
+syn region checkPC start='#check PC' end='#.*$' contains=comments, commands, programCorrectnessKeywords, numericalConstants keepend
+
+syn region proofStep start='^\s*\d\+)' end='\(by\|premise\|{\)' transparent keepend contains=ALLBUT, stepId, programCorrectnessKeywords
 
 " Syntax Highlighting
 
@@ -152,7 +154,7 @@ hi def link zTypes Type
 
 " Program Correctness: Special keywords for program correctness
 hi def link programCorrectnessKeywords Keyword
-hi def link programCorrectnessConstants Constant
 
 " MISC: Special symbols like ;;, which have no good meaning
+hi def link numericalConstants Constant
 "hi def link zNextLine Comment
