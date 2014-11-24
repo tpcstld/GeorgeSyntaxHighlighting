@@ -92,7 +92,7 @@ syn match zNextLine ';;'
 syn keyword programCorrectnessKeywords proc assert
 syn keyword programCorrectnessKeywords if else then while do
 
-syn match numericalConstants '\d\+'
+syn match numericalConstants '\<\d\+\>'
 
 " Metadata Matching
 syn match stepId '\d\+'
